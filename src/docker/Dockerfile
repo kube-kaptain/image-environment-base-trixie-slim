@@ -6,7 +6,7 @@ ENV KUBECTL_VERSION=1.32.11
 ENV YQ4_VERSION=4.50.1
 
 # Strong checksums to match the above
-ENV KUBECTL_SHA512=e99e9defdd19f139f18954ab7da4f84b7487882068dd379bfd924a826b4c8f72cb293353d29c11e673a5981df4b2074075e0fd902b49944634ab59ead605ed53
+ENV KUBECTL_SHA512=dd0aa1ade8e93cbf0ab0310d7e63600354e1b8057c0bde1300a0d37d4afa0fd3de757c59e6646e59cf7e46a8275d0dc58548c0f90f7f402168cec3371bed3706
 ENV YQ4_SHA512=b1043cf55e440e7bd45c9c74b7bd2cdac76bbe9d6de6aff5eaa41159cc6c20c9225d9f7a80874f124a3e55b5732303e6f6164ed7aa7d32fa0d4077cb261782ce
 
 # Leave a trail of breadcrumbs
@@ -33,11 +33,13 @@ RUN rm -rf /var/lib/apt/lists/*
 
 # Install kubectl
 RUN curl -sLo /usr/local/bin/kubectl "https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl"
+RUN sha512sum /usr/local/bin/kubectl
 RUN echo "${KUBECTL_SHA512}  /usr/local/bin/kubectl" | sha512sum -c -
 RUN chmod +x /usr/local/bin/kubectl
 
 # Install yq 4
 RUN curl -sLo /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/download/v${YQ4_VERSION}/yq_linux_amd64"
+RUN sha512sum /usr/local/bin/yq
 RUN echo "${YQ4_SHA512}  /usr/local/bin/yq" | sha512sum -c -
 RUN chmod +x /usr/local/bin/yq
 
