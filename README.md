@@ -21,3 +21,4 @@ just one version across the lot unless mid-upgrade).
 
 - [image-environment-base-alpine-3-23](../image-environment-base-alpine-3-23) - Alpine variant
 - [image-environment-base-ubi-9-minimal](../image-environment-base-ubi-9-minimal) - Red Hat UBI variant
+- [image-environment-base-ubuntu-24-04-lts](../image-environment-base-ubuntu-24-04-lts) - Ubuntu variant
